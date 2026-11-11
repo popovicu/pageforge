@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Tags</title>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<h1>All Tags</h1>
+<ul>
+
+<li><a href="/tags/goodbye/">goodbye</a> (1)</li>
+
+<li><a href="/tags/hello/">hello</a> (1)</li>
+
+<li><a href="/tags/test/">test</a> (2)</li>
+
+</ul>
+
+</body>
+</html>

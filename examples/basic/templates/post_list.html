@@ -1,0 +1,12 @@
+{{define "title"}}Posts{{end}}
+{{define "content"}}
+<h1>All Posts</h1>
+<ul>
+{{range .Pages}}
+<li><a href="{{.URL | canonicalURL}}">{{.Title}}</a> — {{.Date}}</li>
+{{end}}
+</ul>
+{{if .PrevURL}}<a href="{{.PrevURL}}">← Previous</a>{{end}}
+{{if .NextURL}}<a href="{{.NextURL}}">Next →</a>{{end}}
+<p>Page {{.CurrentPage}} of {{.TotalPages}}</p>
+{{end}}

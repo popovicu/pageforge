@@ -1,0 +1,31 @@
+load("@rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "core",
+    srcs = [
+        "context.go",
+        "frontmatter.go",
+        "merge.go",
+        "meta.go",
+        "render.go",
+        "url.go",
+    ],
+    importpath = "github.com/popovicu/pageforge/renderers/core",
+    visibility = ["//renderers:__subpackages__"],
+    deps = [
+        "//internal/templatefuncs",
+        "//third_party:yaml",
+    ],
+)
+
+go_test(
+    name = "core_test",
+    srcs = [
+        "frontmatter_test.go",
+        "merge_test.go",
+        "meta_test.go",
+        "render_test.go",
+    ],
+    embed = [":core"],
+    pure = "on",
+)

@@ -1,0 +1,44 @@
+load("@rules_shell//shell:sh_test.bzl", "sh_test")
+load("//rules:defs.bzl", "site_build", "site_chroma_css", "site_serve")
+
+site_chroma_css(
+    name = "chroma",
+    style = "github",
+    url_path = "/css/chroma.css",
+    visibility = ["//examples:__subpackages__"],
+)
+
+site_build(
+    name = "site",
+    deps = [
+        "//examples/docs/content:about",
+        "//examples/docs/content:home",
+        "//examples/docs/guides/advanced-patterns:01-template-inheritance",
+        "//examples/docs/guides/advanced-patterns:02-collections-and-tags",
+        "//examples/docs/guides/advanced-patterns:03-macros",
+        "//examples/docs/guides/getting-started:01-install",
+        "//examples/docs/guides/getting-started:02-first-site",
+        "//examples/docs/guides/getting-started:03-deploying",
+    ],
+    collections = [
+        "//examples/docs/guides/advanced-patterns:guide",
+        "//examples/docs/guides/getting-started:guide",
+    ],
+    static = [
+        ":chroma",
+        "//examples/docs/static:styles",
+    ],
+)
+
+site_serve(
+    name = "dev",
+    site = ":site",
+    port = 8082,
+)
+
+sh_test(
+    name = "tar_modes_test",
+    srcs = ["//examples/basic:tar_modes_test.sh"],
+    args = ["$(rootpath :site)"],
+    data = [":site"],
+)

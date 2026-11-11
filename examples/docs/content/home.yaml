@@ -1,0 +1,11 @@
+title: "Pageforge Documentation"
+description: "An example documentation site that doubles as Pageforge's own walkthrough. Pick a guide to start."
+guides:
+  - title: "Getting started"
+    url: /guides/getting-started/
+    description: "Install Pageforge, build your first site, and ship the tarball."
+    chapter_count: 3
+  - title: "Advanced patterns"
+    url: /guides/advanced-patterns/
+    description: "Template chains, the metadata sidecar, and when to reach for a macro."
+    chapter_count: 3

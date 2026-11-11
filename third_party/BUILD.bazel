@@ -1,0 +1,71 @@
+alias(
+    name = "goldmark",
+    actual = "@com_github_yuin_goldmark//:goldmark",
+    visibility = ["//visibility:public"],
+)
+
+alias(
+    name = "goldmark_parser",
+    actual = "@com_github_yuin_goldmark//parser",
+    visibility = ["//visibility:public"],
+)
+
+alias(
+    name = "goldmark_renderer_html",
+    actual = "@com_github_yuin_goldmark//renderer/html",
+    visibility = ["//visibility:public"],
+)
+
+alias(
+    name = "goldmark_ast",
+    actual = "@com_github_yuin_goldmark//ast",
+    visibility = ["//visibility:public"],
+)
+
+alias(
+    name = "goldmark_renderer",
+    actual = "@com_github_yuin_goldmark//renderer",
+    visibility = ["//visibility:public"],
+)
+
+alias(
+    name = "goldmark_text",
+    actual = "@com_github_yuin_goldmark//text",
+    visibility = ["//visibility:public"],
+)
+
+alias(
+    name = "goldmark_util",
+    actual = "@com_github_yuin_goldmark//util",
+    visibility = ["//visibility:public"],
+)
+
+alias(
+    name = "goldmark_highlighting",
+    actual = "@com_github_yuin_goldmark_highlighting_v2//:goldmark-highlighting",
+    visibility = ["//visibility:public"],
+)
+
+alias(
+    name = "goldmark_extension",
+    actual = "@com_github_yuin_goldmark//extension",
+    visibility = ["//visibility:public"],
+)
+
+alias(
+    name = "chroma_html",
+    actual = "@com_github_alecthomas_chroma_v2//formatters/html",
+    visibility = ["//visibility:public"],
+)
+
+alias(
+    name = "chroma_styles",
+    actual = "@com_github_alecthomas_chroma_v2//styles",
+    visibility = ["//visibility:public"],
+)
+
+alias(
+    name = "yaml",
+    actual = "@in_gopkg_yaml_v3//:yaml_v3",
+    visibility = ["//visibility:public"],
+)

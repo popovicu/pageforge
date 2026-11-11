@@ -1,0 +1,3 @@
+title: "About this example"
+description: "What you are reading and why it exists."
+body: "This site is an example shipped with Pageforge. It demonstrates the multi-collection 'series of guides' pattern using only Pageforge's stock primitives — no custom rules, no macros. The two guides under /guides/ are the two collections; this page is a one-off site_page rendered from a YAML data file."

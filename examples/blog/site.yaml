@@ -1,0 +1,4 @@
+site:
+  name: "Forge Notes"
+  base_url: "https://example.com"
+  author: "The Editors"

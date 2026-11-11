@@ -1,0 +1,12 @@
+title: "Forge Notes"
+description: "An example blog built with Pageforge — pagination, syntax highlighting, and template functions in action."
+featured:
+  - title: "What a UNIX pipe is, exactly"
+    url: /posts/unix-pipes/
+    summary: "A pipe is a kernel buffer with two file descriptors. Everything else follows."
+  - title: "Why Bazel cache keys are stricter than you think"
+    url: /posts/cache-keys/
+    summary: "A thirty-second tour of the action key, and the one environment leak that ruined my afternoon."
+  - title: "Three SQLite pragmas to set on every new database"
+    url: /posts/sqlite-pragmas/
+    summary: "WAL, foreign keys, and busy_timeout. Set them, walk away."

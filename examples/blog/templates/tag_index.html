@@ -1,0 +1,11 @@
+{{define "title"}}Tags{{end}}
+{{define "content"}}
+<section class="tag-cloud">
+  <h1>All tags</h1>
+  <ul class="tags">
+    {{range .Tags}}
+    <li><a href="{{.URL}}">#{{.Tag}}</a> <span class="count">{{.Count}}</span></li>
+    {{end}}
+  </ul>
+</section>
+{{end}}

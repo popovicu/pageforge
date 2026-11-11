@@ -1,0 +1,42 @@
+load("//rules:defs.bzl", "site_template")
+
+site_template(
+    name = "base",
+    src = "base.html",
+    visibility = ["//examples:__subpackages__"],
+)
+
+site_template(
+    name = "page",
+    src = "page.html",
+    extends = ":base",
+    visibility = ["//examples:__subpackages__"],
+)
+
+site_template(
+    name = "post",
+    src = "post.html",
+    extends = ":base",
+    visibility = ["//examples:__subpackages__"],
+)
+
+site_template(
+    name = "post_list",
+    src = "post_list.html",
+    extends = ":base",
+    visibility = ["//examples:__subpackages__"],
+)
+
+site_template(
+    name = "tag_list",
+    src = "tag_list.html",
+    extends = ":base",
+    visibility = ["//examples:__subpackages__"],
+)
+
+site_template(
+    name = "tag_index",
+    src = "tag_index.html",
+    extends = ":base",
+    visibility = ["//examples:__subpackages__"],
+)

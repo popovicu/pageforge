@@ -1,0 +1,104 @@
+load("//rules:defs.bzl", "site_collection", "site_markdown", "site_page", "site_tags")
+
+site_markdown(
+    name = "hello",
+    src = "hello.md",
+    template = "//examples/basic/templates:post",
+    url_path = "/posts/hello/index.html",
+    visibility = ["//examples:__subpackages__"],
+)
+
+filegroup(
+    name = "hello.html",
+    srcs = [":hello"],
+    output_group = "html",
+    visibility = ["//examples:__subpackages__"],
+)
+
+filegroup(
+    name = "hello.meta.json",
+    srcs = [":hello"],
+    output_group = "metadata",
+    visibility = ["//examples:__subpackages__"],
+)
+
+site_markdown(
+    name = "goodbye",
+    src = "goodbye.md",
+    template = "//examples/basic/templates:post",
+    url_path = "/posts/goodbye/index.html",
+    visibility = ["//examples:__subpackages__"],
+)
+
+filegroup(
+    name = "goodbye.html",
+    srcs = [":goodbye"],
+    output_group = "html",
+    visibility = ["//examples:__subpackages__"],
+)
+
+filegroup(
+    name = "goodbye.meta.json",
+    srcs = [":goodbye"],
+    output_group = "metadata",
+    visibility = ["//examples:__subpackages__"],
+)
+
+site_collection(
+    name = "all_posts",
+    pages = [":hello", ":goodbye"],
+    template = "//examples/basic/templates:post_list",
+    url_path = "/posts",
+    sort_by = "date",
+    sort_order = "desc",
+    visibility = ["//examples:__subpackages__"],
+)
+
+genrule(
+    name = "all_posts_index",
+    srcs = [":all_posts"],
+    outs = ["all_posts_index.html"],
+    cmd = "tar xf $(location :all_posts) -O posts/index.html > $@",
+    visibility = ["//examples:__subpackages__"],
+)
+
+site_tags(
+    name = "all_tags",
+    pages = [":hello", ":goodbye"],
+    tag_template = "//examples/basic/templates:tag_list",
+    index_template = "//examples/basic/templates:tag_index",
+    url_prefix = "/tags",
+    sort_by = "date",
+    sort_order = "desc",
+    visibility = ["//examples:__subpackages__"],
+)
+
+genrule(
+    name = "tags_index",
+    srcs = [":all_tags"],
+    outs = ["tags_index.html"],
+    cmd = "tar xf $(location :all_tags) -O tags/index.html > $@",
+    visibility = ["//examples:__subpackages__"],
+)
+
+genrule(
+    name = "tags_test_page",
+    srcs = [":all_tags"],
+    outs = ["tags_test_page.html"],
+    cmd = "tar xf $(location :all_tags) -O tags/test/index.html > $@",
+    visibility = ["//examples:__subpackages__"],
+)
+
+site_page(
+    name = "about",
+    data = "about.yaml",
+    template = "//examples/basic/templates:page",
+    url_path = "/about/index.html",
+    visibility = ["//examples:__subpackages__"],
+)
+
+filegroup(
+    name = "about.html",
+    srcs = [":about"],
+    visibility = ["//examples:__subpackages__"],
+)

@@ -1,0 +1,12 @@
+{{define "title"}}Stack{{end}}
+{{define "content"}}
+<section class="tag-cloud">
+  <h1>Stack</h1>
+  <p class="lede">Technologies the studio has reached for, with how often.</p>
+  <ul class="tags">
+    {{range .Tags}}
+    <li><a href="{{.URL}}">{{.Tag}}</a> <span class="count">×{{.Count}}</span></li>
+    {{end}}
+  </ul>
+</section>
+{{end}}

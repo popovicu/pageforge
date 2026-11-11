@@ -1,0 +1,34 @@
+load("@rules_shell//shell:sh_test.bzl", "sh_test")
+load("//rules:defs.bzl", "site_build", "site_serve")
+
+exports_files(
+    ["tar_modes_test.sh"],
+    visibility = ["//examples:__subpackages__"],
+)
+
+site_build(
+    name = "site",
+    deps = [
+        "//examples/basic/content:about",
+        "//examples/basic/content:goodbye",
+        "//examples/basic/content:hello",
+    ],
+    collections = [
+        "//examples/basic/content:all_posts",
+        "//examples/basic/content:all_tags",
+    ],
+    static = ["//examples/basic/static:styles"],
+)
+
+site_serve(
+    name = "dev",
+    site = ":site",
+    port = 8080,
+)
+
+sh_test(
+    name = "tar_modes_test",
+    srcs = ["tar_modes_test.sh"],
+    args = ["$(rootpath :site)"],
+    data = [":site"],
+)

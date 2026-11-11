@@ -1,0 +1,27 @@
+description = "Scaffold a new pageforge rule following project conventions."
+
+prompt = """
+Help add a new pageforge rule. Before writing anything:
+
+1. Read `docs/spec.md` and `docs/rules.md` to confirm the rule's contract
+   fits the existing model.
+2. Pick the closest existing rule as a template. `rules/markdown.bzl` is the
+   canonical example for a page-producing rule; `rules/collection.bzl` for
+   an aggregation rule.
+
+When implementing:
+- Return `SiteOutputInfo` with a list of `SiteFileEntry` (even if length 1).
+- If the rule renders templates, accept a single `template` attr (label
+  providing `TemplateInfo`) — never a list of template files. Template chain
+  walking is `site_template`'s job.
+- If the rule emits sidecar metadata, expose it via `OutputGroupInfo` under
+  `metadata` so `site_collection` / `site_tags` can consume it.
+- Add the new symbol to `rules/defs.bzl`.
+- If a Go renderer is needed, place it at `renderers/<name>/main.go` with a
+  hand-written `BUILD.bazel` mirroring an existing renderer.
+- Document the rule in `docs/rules.md` with the same table format as the
+  existing entries.
+
+Ask before adding new rule attributes that aren't in the spec — extending the
+public surface is a design decision, not a refactor.
+"""

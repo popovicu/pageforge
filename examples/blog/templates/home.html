@@ -1,0 +1,20 @@
+{{define "title"}}{{.Title}}{{end}}
+{{define "head_title"}}{{.Metadata.site.name}}{{end}}
+{{define "content"}}
+<section class="hero">
+  <h1>{{.Title}}</h1>
+  <p class="lede">{{.Description}}</p>
+</section>
+<section class="featured">
+  <h2>Featured</h2>
+  <ul class="featured-list">
+    {{range .Metadata.featured}}
+    <li>
+      <a href="{{.url}}">{{.title}}</a>
+      <p>{{.summary}}</p>
+    </li>
+    {{end}}
+  </ul>
+  <p><a class="more" href="/posts/">Read everything →</a></p>
+</section>
+{{end}}

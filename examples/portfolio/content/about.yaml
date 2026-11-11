@@ -1,0 +1,3 @@
+title: "About Studio Coppice"
+description: "Who we are and how to reach us."
+body: "Studio Coppice is a fictional consultancy invented to give Pageforge a portfolio-shaped example to render. The four projects on this site are not real; the templates, build wiring, and structured front matter are. If you are reading the source, the interesting part is the three-level template chain (base → layout → project) and the use of site_page for non-Markdown pages like this one."

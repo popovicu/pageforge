@@ -1,0 +1,9 @@
+load("@rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "testutil",
+    testonly = True,
+    srcs = ["testutil.go"],
+    importpath = "github.com/popovicu/pageforge/internal/testutil",
+    visibility = ["//:__subpackages__"],
+)

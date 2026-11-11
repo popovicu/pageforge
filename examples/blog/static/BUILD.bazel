@@ -1,0 +1,8 @@
+load("//rules:defs.bzl", "site_static")
+
+site_static(
+    name = "styles",
+    srcs = ["blog.css"],
+    url_prefix = "/css",
+    visibility = ["//examples:__subpackages__"],
+)

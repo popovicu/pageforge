@@ -1,0 +1,112 @@
+load(
+    "//rules:defs.bzl",
+    "site_collection",
+    "site_feed",
+    "site_markdown",
+    "site_page",
+    "site_search_index",
+    "site_sitemap",
+    "site_tags",
+)
+
+POST_NAMES = [
+    "welcome",
+    "auto-toc",
+    "cache-keys",
+    "custom-toc-marker",
+    "go-template-funcs",
+    "no-toc",
+    "sqlite-pragmas",
+    "unix-pipes",
+]
+
+[
+    site_markdown(
+        name = post,
+        src = post + ".md",
+        template = "//examples/blog/templates:post",
+        url_path = "/posts/" + post + "/index.html",
+        site_config = "//examples/blog:site_config",
+        visibility = ["//examples:__subpackages__"],
+    )
+    for post in POST_NAMES
+]
+
+site_collection(
+    name = "all_posts",
+    pages = [":" + p for p in POST_NAMES],
+    template = "//examples/blog/templates:post_list",
+    url_path = "/posts",
+    sort_by = "date",
+    sort_order = "desc",
+    paginate = 2,
+    extra_metadata = {
+        "title": "All posts",
+        "description": "Every post on Forge Notes, newest first.",
+    },
+    site_config = "//examples/blog:site_config",
+    visibility = ["//examples:__subpackages__"],
+)
+
+site_tags(
+    name = "all_tags",
+    pages = [":" + p for p in POST_NAMES],
+    tag_template = "//examples/blog/templates:tag_list",
+    index_template = "//examples/blog/templates:tag_index",
+    url_prefix = "/tags",
+    sort_by = "date",
+    sort_order = "desc",
+    site_config = "//examples/blog:site_config",
+    visibility = ["//examples:__subpackages__"],
+)
+
+site_page(
+    name = "home",
+    data = "home.yaml",
+    template = "//examples/blog/templates:home",
+    url_path = "/index.html",
+    site_config = "//examples/blog:site_config",
+    visibility = ["//examples:__subpackages__"],
+)
+
+site_page(
+    name = "about",
+    data = "about.yaml",
+    template = "//examples/blog/templates:page",
+    url_path = "/about/index.html",
+    site_config = "//examples/blog:site_config",
+    visibility = ["//examples:__subpackages__"],
+)
+
+site_feed(
+    name = "rss",
+    pages = [":" + p for p in POST_NAMES],
+    title = "Forge Notes",
+    description = "Posts on the forge.",
+    base_url = "https://example.com",
+    url_path = "/rss.xml",
+    author = "editors@example.com (The Editors)",
+    visibility = ["//examples:__subpackages__"],
+)
+
+site_sitemap(
+    name = "sitemap",
+    pages = [":" + p for p in POST_NAMES] + [":home", ":about"],
+    collections = [":all_posts", ":all_tags"],
+    base_url = "https://example.com",
+    url_path = "/sitemap.xml",
+    visibility = ["//examples:__subpackages__"],
+)
+
+site_search_index(
+    name = "search",
+    pages = [":" + p for p in POST_NAMES],
+    fields = [
+        "title",
+        "description",
+        "tags",
+        "date",
+    ],
+    url_path = "/search.json",
+    visibility = ["//examples:__subpackages__"],
+)

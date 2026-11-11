@@ -1,0 +1,19 @@
+{{define "title"}}Projects{{end}}
+{{define "content"}}
+<section class="project-list">
+  <h1>{{if .Title}}{{.Title}}{{else}}Selected projects{{end}}</h1>
+  {{with .Description}}<p class="lede">{{.}}</p>{{end}}
+  <ul class="project-grid">
+    {{range .Pages}}
+    <li class="project-card {{if hasPrefix "shipped" (printf "%s" .Metadata.status)}}is-shipped{{end}}">
+      <a class="project-link" href="{{.URL | canonicalURL}}">
+        <p class="kicker">{{.Metadata.year}}</p>
+        <h2>{{.Title}}</h2>
+        {{with .Description}}<p class="summary">{{.}}</p>{{end}}
+        {{if .Tags}}<p class="stack-line">{{range $i, $t := .Tags}}{{if $i}} · {{end}}{{$t}}{{end}}</p>{{end}}
+      </a>
+    </li>
+    {{end}}
+  </ul>
+</section>
+{{end}}

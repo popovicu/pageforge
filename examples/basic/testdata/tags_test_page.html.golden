@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Tag: test</title>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<h1>Posts tagged "test"</h1>
+<ul>
+
+<li><a href="/posts/hello/">Hello World</a> — 2026-04-15T00:00:00Z</li>
+
+<li><a href="/posts/goodbye/">Goodbye World</a> — 2026-04-14T00:00:00Z</li>
+
+</ul>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+{{define "title"}}{{.Title}}{{end}}
+{{define "head_title"}}{{.Title}}{{end}}
+{{define "content"}}
+<section class="studio-intro">
+  <h1>{{.Title}}</h1>
+  <p class="lede">{{.Description}}</p>
+  {{with .Metadata.tagline}}<p class="tagline">{{.}}</p>{{end}}
+</section>
+
+<section class="recent">
+  <h2>Selected work</h2>
+  <ul class="project-grid">
+    {{range .Metadata.featured}}
+    <li class="project-card">
+      <a class="project-link" href="{{.url}}">
+        <p class="kicker">{{.year}}</p>
+        <h3>{{.title}}</h3>
+        <p class="summary">{{.summary}}</p>
+      </a>
+    </li>
+    {{end}}
+  </ul>
+  <p><a class="more" href="/projects/">See everything →</a></p>
+</section>
+{{end}}

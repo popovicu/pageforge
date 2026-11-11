@@ -1,0 +1,17 @@
+load("//rules:defs.bzl", "site_page")
+
+site_page(
+    name = "home",
+    data = "home.yaml",
+    template = "//examples/docs/templates:home",
+    url_path = "/index.html",
+    visibility = ["//examples:__subpackages__"],
+)
+
+site_page(
+    name = "about",
+    data = "about.yaml",
+    template = "//examples/docs/templates:page",
+    url_path = "/about/index.html",
+    visibility = ["//examples:__subpackages__"],
+)

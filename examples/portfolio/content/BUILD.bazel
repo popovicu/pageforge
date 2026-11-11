@@ -1,0 +1,60 @@
+load("//rules:defs.bzl", "site_collection", "site_markdown", "site_page", "site_tags")
+
+PROJECTS = [
+    "ledger-cli",
+    "raster-vm",
+    "bookbinder",
+    "pollen-map",
+]
+
+[
+    site_markdown(
+        name = project,
+        src = project + ".md",
+        template = "//examples/portfolio/templates:project",
+        url_path = "/projects/" + project + "/index.html",
+        visibility = ["//examples:__subpackages__"],
+    )
+    for project in PROJECTS
+]
+
+site_collection(
+    name = "all_projects",
+    pages = [":" + p for p in PROJECTS],
+    template = "//examples/portfolio/templates:project_list",
+    url_path = "/projects",
+    sort_by = "year",
+    sort_order = "desc",
+    extra_metadata = {
+        "title": "All projects",
+        "description": "Everything the studio has shipped, newest first.",
+    },
+    visibility = ["//examples:__subpackages__"],
+)
+
+site_tags(
+    name = "all_tags",
+    pages = [":" + p for p in PROJECTS],
+    tag_template = "//examples/portfolio/templates:tag_list",
+    index_template = "//examples/portfolio/templates:tag_index",
+    url_prefix = "/tags",
+    sort_by = "year",
+    sort_order = "desc",
+    visibility = ["//examples:__subpackages__"],
+)
+
+site_page(
+    name = "home",
+    data = "home.yaml",
+    template = "//examples/portfolio/templates:home",
+    url_path = "/index.html",
+    visibility = ["//examples:__subpackages__"],
+)
+
+site_page(
+    name = "about",
+    data = "about.yaml",
+    template = "//examples/portfolio/templates:page",
+    url_path = "/about/index.html",
+    visibility = ["//examples:__subpackages__"],
+)

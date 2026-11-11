@@ -1,0 +1,24 @@
+load("@rules_go//go:def.bzl", "go_binary", "go_library", "go_test")
+
+go_library(
+    name = "tags_lib",
+    srcs = ["main.go"],
+    importpath = "github.com/popovicu/pageforge/renderers/tags",
+    visibility = ["//visibility:private"],
+    deps = ["//renderers/core"],
+)
+
+go_binary(
+    name = "tags",
+    embed = [":tags_lib"],
+    pure = "on",
+    visibility = ["//visibility:public"],
+)
+
+go_test(
+    name = "tags_test",
+    srcs = ["main_test.go"],
+    embed = [":tags_lib"],
+    pure = "on",
+    deps = ["//internal/testutil"],
+)

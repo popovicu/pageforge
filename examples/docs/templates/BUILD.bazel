@@ -1,0 +1,35 @@
+load("//rules:defs.bzl", "site_template")
+
+site_template(
+    name = "base",
+    src = "base.html",
+    visibility = ["//examples:__subpackages__"],
+)
+
+site_template(
+    name = "home",
+    src = "home.html",
+    extends = ":base",
+    visibility = ["//examples:__subpackages__"],
+)
+
+site_template(
+    name = "page",
+    src = "page.html",
+    extends = ":base",
+    visibility = ["//examples:__subpackages__"],
+)
+
+site_template(
+    name = "chapter",
+    src = "chapter.html",
+    extends = ":base",
+    visibility = ["//examples:__subpackages__"],
+)
+
+site_template(
+    name = "guide_index",
+    src = "guide_index.html",
+    extends = ":base",
+    visibility = ["//examples:__subpackages__"],
+)

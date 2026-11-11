@@ -1,0 +1,12 @@
+load("@rules_go//go:def.bzl", "go_binary")
+
+go_binary(
+    name = "chromacss",
+    srcs = ["main.go"],
+    deps = [
+        "//third_party:chroma_html",
+        "//third_party:chroma_styles",
+    ],
+    pure = "on",
+    visibility = ["//visibility:public"],
+)

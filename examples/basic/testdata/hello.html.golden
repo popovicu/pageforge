@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Hello World</title>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<article>
+<h1>Hello World</h1>
+<p>This is a test post rendered by <strong>Pageforge</strong>.</p>
+<pre class="chroma"><code><span class="line"><span class="cl"><span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;Hello from Pageforge!&#34;</span><span class="p">)</span><span class="w">
+</span></span></span></code></pre>
+</article>
+
+</body>
+</html>

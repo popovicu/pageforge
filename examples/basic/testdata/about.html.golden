@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>About Pageforge</title>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<div class="page">
+<h1>About Pageforge</h1>
+<p>A Bazel-native static site generator.</p>
+</div>
+
+</body>
+</html>

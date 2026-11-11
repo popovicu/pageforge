@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Goodbye World</title>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<article>
+<h1>Goodbye World</h1>
+<p>This is a second test post for collection testing.</p>
+
+</article>
+
+</body>
+</html>

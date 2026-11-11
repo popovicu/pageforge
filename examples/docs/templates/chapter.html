@@ -1,0 +1,27 @@
+{{define "title"}}{{.Title}}{{end}}
+{{define "content"}}
+<article class="chapter">
+  <p class="breadcrumb">
+    <a href="/">Docs</a>
+    {{with .Metadata.guide_url}} / <a href="{{.}}">{{$.Metadata.guide_title}}</a>{{end}}
+    / <span aria-current="page">{{.Title}}</span>
+  </p>
+
+  <header>
+    <p class="chapter-num">Chapter {{.Metadata.order}}</p>
+    <h1>{{.Title}}</h1>
+    {{with .Description}}<p class="lede">{{.}}</p>{{end}}
+    {{with .Date}}<p class="meta">Updated <time datetime="{{.}}">{{formatTime "January 2, 2006" .}}</time></p>{{end}}
+  </header>
+
+  <section class="body">
+    {{.Content}}
+  </section>
+
+  {{with .Metadata.guide_url}}
+  <footer class="chapter-footer">
+    <a href="{{.}}">← Back to {{$.Metadata.guide_title}}</a>
+  </footer>
+  {{end}}
+</article>
+{{end}}

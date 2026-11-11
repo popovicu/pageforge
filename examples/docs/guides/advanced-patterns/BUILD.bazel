@@ -1,0 +1,32 @@
+load("//rules:defs.bzl", "site_collection", "site_markdown")
+
+CHAPTERS = [
+    "01-template-inheritance",
+    "02-collections-and-tags",
+    "03-macros",
+]
+
+[
+    site_markdown(
+        name = chapter,
+        src = chapter + ".md",
+        template = "//examples/docs/templates:chapter",
+        url_path = "/guides/advanced-patterns/" + chapter + "/index.html",
+        visibility = ["//examples:__subpackages__"],
+    )
+    for chapter in CHAPTERS
+]
+
+site_collection(
+    name = "guide",
+    pages = [":" + c for c in CHAPTERS],
+    template = "//examples/docs/templates:guide_index",
+    url_path = "/guides/advanced-patterns",
+    sort_by = "order",
+    sort_order = "asc",
+    extra_metadata = {
+        "title": "Advanced Pageforge patterns",
+        "description": "Inheritance chains, sidecar metadata, and the right time to reach for a macro.",
+    },
+    visibility = ["//examples:__subpackages__"],
+)

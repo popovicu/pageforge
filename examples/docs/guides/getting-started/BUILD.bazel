@@ -1,0 +1,32 @@
+load("//rules:defs.bzl", "site_collection", "site_markdown")
+
+CHAPTERS = [
+    "01-install",
+    "02-first-site",
+    "03-deploying",
+]
+
+[
+    site_markdown(
+        name = chapter,
+        src = chapter + ".md",
+        template = "//examples/docs/templates:chapter",
+        url_path = "/guides/getting-started/" + chapter + "/index.html",
+        visibility = ["//examples:__subpackages__"],
+    )
+    for chapter in CHAPTERS
+]
+
+site_collection(
+    name = "guide",
+    pages = [":" + c for c in CHAPTERS],
+    template = "//examples/docs/templates:guide_index",
+    url_path = "/guides/getting-started",
+    sort_by = "order",
+    sort_order = "asc",
+    extra_metadata = {
+        "title": "Getting started with Pageforge",
+        "description": "From install to first deploy in three short chapters.",
+    },
+    visibility = ["//examples:__subpackages__"],
+)

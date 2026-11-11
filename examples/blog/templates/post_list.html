@@ -1,0 +1,26 @@
+{{define "title"}}Posts — page {{.CurrentPage}}{{end}}
+{{define "content"}}
+<section class="post-list">
+  <h1>{{if .Title}}{{.Title}}{{else}}All posts{{end}}</h1>
+  {{with .Description}}<p class="lede">{{.}}</p>{{end}}
+
+  <ol class="posts">
+    {{range .Pages}}
+    <li>
+      <a class="post-link" href="{{.URL | canonicalURL}}">{{.Title}}</a>
+      <p class="post-meta">
+        <time datetime="{{.Date}}">{{formatTime "Jan 2, 2006" .Date}}</time>
+        {{with .Metadata.author}} · {{.}}{{end}}
+      </p>
+      {{with .Description}}<p class="post-summary">{{.}}</p>{{end}}
+    </li>
+    {{end}}
+  </ol>
+
+  <nav class="pager">
+    {{if .PrevURL}}<a class="prev" href="{{.PrevURL}}">← Newer</a>{{else}}<span class="prev disabled">← Newer</span>{{end}}
+    <span class="page-of">Page {{.CurrentPage}} of {{.TotalPages}}</span>
+    {{if .NextURL}}<a class="next" href="{{.NextURL}}">Older →</a>{{else}}<span class="next disabled">Older →</span>{{end}}
+  </nav>
+</section>
+{{end}}

@@ -1,0 +1,10 @@
+{
+  "date": "2026-04-14T00:00:00Z",
+  "description": "A second post to test collections.",
+  "tags": [
+    "test",
+    "goodbye"
+  ],
+  "title": "Goodbye World",
+  "url_path": "/posts/goodbye/index.html"
+}

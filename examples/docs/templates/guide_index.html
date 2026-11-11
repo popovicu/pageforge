@@ -1,0 +1,19 @@
+{{define "title"}}{{.Title}}{{end}}
+{{define "content"}}
+<section class="guide-index">
+  <p class="breadcrumb"><a href="/">Docs</a> / <span aria-current="page">{{.Title}}</span></p>
+
+  <h1>{{.Title}}</h1>
+  {{with .Description}}<p class="lede">{{.}}</p>{{end}}
+
+  <ol class="toc">
+    {{range $i, $page := .Pages}}
+    <li>
+      <span class="toc-num">{{add $i 1}}</span>
+      <a href="{{$page.URL | canonicalURL}}">{{$page.Title}}</a>
+      {{with $page.Description}}<p class="toc-summary">{{.}}</p>{{end}}
+    </li>
+    {{end}}
+  </ol>
+</section>
+{{end}}

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>{{block "head_title" .}}{{template "title" .}} — {{.Metadata.site.name}}{{end}}</title>
+<link rel="stylesheet" href="/css/blog.css">
+<link rel="stylesheet" href="/css/chroma.css">
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="/">{{.Metadata.site.name}}</a>
+  <nav>
+    <a href="/posts/">Posts</a>
+    <a href="/tags/">Tags</a>
+    <a href="/about/">About</a>
+  </nav>
+</header>
+<main>
+{{template "content" .}}
+</main>
+<footer class="site-footer">
+  <p>Built with Pageforge.</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,31 @@
+{{define "title"}}{{.Title}}{{end}}
+{{define "primary"}}
+<header class="project-header">
+  <p class="kicker">{{.Metadata.year}} · {{.Metadata.role}}</p>
+  <h1>{{.Title}}</h1>
+  {{with .Description}}<p class="lede">{{.}}</p>{{end}}
+</header>
+<section class="case-study">
+  {{.Content}}
+</section>
+{{end}}
+{{define "sidebar"}}
+<dl class="facts">
+  {{with .Metadata.client}}<dt>Client</dt><dd>{{.}}</dd>{{end}}
+  {{with .Metadata.year}}<dt>Year</dt><dd>{{.}}</dd>{{end}}
+  {{with .Metadata.role}}<dt>Role</dt><dd>{{.}}</dd>{{end}}
+  {{with .Metadata.status}}
+    <dt>Status</dt>
+    <dd><span class="badge badge-{{.}}">{{.}}</span></dd>
+  {{end}}
+  {{if .Tags}}
+    <dt>Stack</dt>
+    <dd>
+      <ul class="stack">
+        {{range .Tags}}<li><a href="/tags/{{.}}/">{{.}}</a></li>{{end}}
+      </ul>
+    </dd>
+  {{end}}
+  {{with .Metadata.live_url}}<dt>Link</dt><dd><a href="{{.}}">Visit →</a></dd>{{end}}
+</dl>
+{{end}}

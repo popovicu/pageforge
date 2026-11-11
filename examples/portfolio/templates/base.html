@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>{{block "head_title" .}}{{template "title" .}} — Studio Coppice{{end}}</title>
+<link rel="stylesheet" href="/css/portfolio.css">
+<link rel="stylesheet" href="/css/chroma.css">
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="/">Studio Coppice</a>
+  <nav>
+    <a href="/projects/">Projects</a>
+    <a href="/tags/">Stack</a>
+    <a href="/about/">About</a>
+  </nav>
+</header>
+<main class="page-shell">
+{{block "shell" .}}
+  {{template "content" .}}
+{{end}}
+</main>
+<footer class="site-footer">
+  <p>Studio Coppice — an example portfolio built with Pageforge.</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,3 @@
+title: "About Forge Notes"
+description: "An example site for Pageforge."
+body: "Forge Notes is one of the example sites that ships with Pageforge. It is small on purpose — just enough content to exercise pagination, syntax highlighting, and template functions, without burying the source under prose."

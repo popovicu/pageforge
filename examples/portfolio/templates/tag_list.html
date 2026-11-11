@@ -1,0 +1,18 @@
+{{define "title"}}Stack: {{.Tag}}{{end}}
+{{define "content"}}
+<section class="tag-page">
+  <h1>Built with <span class="tag">{{.Tag}}</span></h1>
+  <ul class="project-grid">
+    {{range .Pages}}
+    <li class="project-card">
+      <a class="project-link" href="{{.URL | canonicalURL}}">
+        <p class="kicker">{{.Metadata.year}}</p>
+        <h2>{{.Title}}</h2>
+        {{with .Description}}<p class="summary">{{.}}</p>{{end}}
+      </a>
+    </li>
+    {{end}}
+  </ul>
+  <p><a href="/tags/">← All stacks</a></p>
+</section>
+{{end}}

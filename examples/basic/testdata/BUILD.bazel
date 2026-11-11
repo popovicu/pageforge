@@ -1,0 +1,57 @@
+load("@bazel_skylib//rules:diff_test.bzl", "diff_test")
+
+diff_test(
+    name = "hello_html_test",
+    file1 = "hello.html.golden",
+    file2 = "//examples/basic/content:hello.html",
+    failure_message = "Markdown render output changed",
+)
+
+diff_test(
+    name = "hello_meta_test",
+    file1 = "hello.meta.json.golden",
+    file2 = "//examples/basic/content:hello.meta.json",
+    failure_message = "Markdown metadata output changed",
+)
+
+diff_test(
+    name = "goodbye_html_test",
+    file1 = "goodbye.html.golden",
+    file2 = "//examples/basic/content:goodbye.html",
+    failure_message = "Markdown render output changed (goodbye)",
+)
+
+diff_test(
+    name = "goodbye_meta_test",
+    file1 = "goodbye.meta.json.golden",
+    file2 = "//examples/basic/content:goodbye.meta.json",
+    failure_message = "Markdown metadata output changed (goodbye)",
+)
+
+diff_test(
+    name = "about_html_test",
+    file1 = "about.html.golden",
+    file2 = "//examples/basic/content:about.html",
+    failure_message = "Page render output changed",
+)
+
+diff_test(
+    name = "posts_index_test",
+    file1 = "posts_index.html.golden",
+    file2 = "//examples/basic/content:all_posts_index",
+    failure_message = "Collection listing output changed",
+)
+
+diff_test(
+    name = "tags_index_test",
+    file1 = "tags_index.html.golden",
+    file2 = "//examples/basic/content:tags_index",
+    failure_message = "Tag index output changed",
+)
+
+diff_test(
+    name = "tags_test_page_test",
+    file1 = "tags_test_page.html.golden",
+    file2 = "//examples/basic/content:tags_test_page",
+    failure_message = "Tag page output changed",
+)

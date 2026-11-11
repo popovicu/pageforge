@@ -1,0 +1,9 @@
+bazel-*
+*~
+#*
+*#
+#*#
+*.swp
+*.swo
+**/__pycache__/
+.vscode/

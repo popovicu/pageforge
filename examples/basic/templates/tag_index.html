@@ -1,0 +1,9 @@
+{{define "title"}}Tags{{end}}
+{{define "content"}}
+<h1>All Tags</h1>
+<ul>
+{{range .Tags}}
+<li><a href="{{.URL}}">{{.Tag}}</a> ({{.Count}})</li>
+{{end}}
+</ul>
+{{end}}

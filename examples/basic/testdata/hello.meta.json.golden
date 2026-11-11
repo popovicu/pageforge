@@ -1,0 +1,10 @@
+{
+  "date": "2026-04-15T00:00:00Z",
+  "description": "A first post to test Pageforge.",
+  "tags": [
+    "test",
+    "hello"
+  ],
+  "title": "Hello World",
+  "url_path": "/posts/hello/index.html"
+}

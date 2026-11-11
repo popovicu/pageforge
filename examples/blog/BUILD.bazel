@@ -1,0 +1,71 @@
+load("@rules_shell//shell:sh_test.bzl", "sh_test")
+load("//rules:defs.bzl", "site_build", "site_chroma_css", "site_serve")
+
+# Site-wide metadata. Threaded into every page-producing rule via the
+# upstream `site_config` attribute so templates can read .Metadata.site.*
+# (name, base_url, author) without per-page boilerplate.
+#
+# A filegroup is the right wrapper here: the upstream attribute is just
+# `attr.label(allow_single_file = [".yaml"])`, so anything that resolves to
+# one file works. Filegroup gives the file a target name, exposes it across
+# packages via visibility, and is the natural home for a `select()` swap
+# between prod/dev YAMLs (see LFG's BUILD.bazel for that pattern).
+filegroup(
+    name = "site_config",
+    srcs = ["site.yaml"],
+    visibility = ["//examples:__subpackages__"],
+)
+
+site_chroma_css(
+    name = "chroma",
+    style = "monokai",
+    url_path = "/css/chroma.css",
+    visibility = ["//examples:__subpackages__"],
+)
+
+site_build(
+    name = "site",
+    deps = [
+        "//examples/blog/content:about",
+        "//examples/blog/content:auto-toc",
+        "//examples/blog/content:cache-keys",
+        "//examples/blog/content:custom-toc-marker",
+        "//examples/blog/content:go-template-funcs",
+        "//examples/blog/content:home",
+        "//examples/blog/content:no-toc",
+        "//examples/blog/content:sqlite-pragmas",
+        "//examples/blog/content:unix-pipes",
+        "//examples/blog/content:welcome",
+    ],
+    collections = [
+        "//examples/blog/content:all_posts",
+        "//examples/blog/content:all_tags",
+    ],
+    static = [
+        ":chroma",
+        "//examples/blog/content:rss",
+        "//examples/blog/content:search",
+        "//examples/blog/content:sitemap",
+        "//examples/blog/static:styles",
+    ],
+)
+
+site_serve(
+    name = "dev",
+    site = ":site",
+    port = 8081,
+)
+
+sh_test(
+    name = "tar_modes_test",
+    srcs = ["//examples/basic:tar_modes_test.sh"],
+    args = ["$(rootpath :site)"],
+    data = [":site"],
+)
+
+sh_test(
+    name = "artifacts_test",
+    srcs = ["artifacts_test.sh"],
+    args = ["$(rootpath :site)"],
+    data = [":site"],
+)

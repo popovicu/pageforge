@@ -1,0 +1,42 @@
+load("@rules_shell//shell:sh_test.bzl", "sh_test")
+load("//rules:defs.bzl", "site_build", "site_chroma_css", "site_serve")
+
+site_chroma_css(
+    name = "chroma",
+    style = "github",
+    url_path = "/css/chroma.css",
+    visibility = ["//examples:__subpackages__"],
+)
+
+site_build(
+    name = "site",
+    deps = [
+        "//examples/portfolio/content:about",
+        "//examples/portfolio/content:bookbinder",
+        "//examples/portfolio/content:home",
+        "//examples/portfolio/content:ledger-cli",
+        "//examples/portfolio/content:pollen-map",
+        "//examples/portfolio/content:raster-vm",
+    ],
+    collections = [
+        "//examples/portfolio/content:all_projects",
+        "//examples/portfolio/content:all_tags",
+    ],
+    static = [
+        ":chroma",
+        "//examples/portfolio/static:styles",
+    ],
+)
+
+site_serve(
+    name = "dev",
+    site = ":site",
+    port = 8083,
+)
+
+sh_test(
+    name = "tar_modes_test",
+    srcs = ["//examples/basic:tar_modes_test.sh"],
+    args = ["$(rootpath :site)"],
+    data = [":site"],
+)

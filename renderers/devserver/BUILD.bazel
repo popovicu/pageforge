@@ -1,0 +1,23 @@
+load("@rules_go//go:def.bzl", "go_binary", "go_library", "go_test")
+
+go_library(
+    name = "devserver_lib",
+    srcs = ["main.go"],
+    importpath = "github.com/popovicu/pageforge/renderers/devserver",
+    visibility = ["//visibility:private"],
+)
+
+go_binary(
+    name = "devserver",
+    embed = [":devserver_lib"],
+    pure = "on",
+    visibility = ["//visibility:public"],
+)
+
+go_test(
+    name = "devserver_test",
+    srcs = ["main_test.go"],
+    embed = [":devserver_lib"],
+    pure = "on",
+    deps = ["//internal/testutil"],
+)

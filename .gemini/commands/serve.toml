@@ -1,0 +1,9 @@
+description = "Build and serve the basic example site for local browsing."
+
+prompt = """
+Run `bazel run //examples/basic:dev` to build and serve the basic example,
+then point the user at http://localhost:8080/posts/ (the basic example has no
+home page). This is a long-running process — run it in the background and tell
+the user the URL once the server has started. If port 8080 is taken, report
+which process holds it rather than picking a different port silently.
+"""

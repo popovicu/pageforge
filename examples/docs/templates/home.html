@@ -1,0 +1,17 @@
+{{define "title"}}{{.Title}}{{end}}
+{{define "content"}}
+<section class="docs-home">
+  <h1>{{.Title}}</h1>
+  <p class="lede">{{.Description}}</p>
+
+  <div class="guides">
+    {{range .Metadata.guides}}
+    <article class="guide-card">
+      <h2><a href="{{.url}}">{{.title}}</a></h2>
+      <p>{{.description}}</p>
+      <p class="guide-meta">{{.chapter_count}} chapters</p>
+    </article>
+    {{end}}
+  </div>
+</section>
+{{end}}

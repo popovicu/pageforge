@@ -1,0 +1,16 @@
+title: "Studio Coppice"
+description: "An example portfolio for a tiny consultancy that ships small, useful tools."
+tagline: "We like databases, command-line interfaces, and the kind of code you can read in an afternoon."
+featured:
+  - title: "A regional pollen map"
+    url: /projects/pollen-map/
+    year: 2026
+    summary: "Hourly pollen counts across the watershed, on a single leaflet map."
+  - title: "A teaching VM for raster graphics"
+    url: /projects/raster-vm/
+    year: 2025
+    summary: "Thirty-two opcodes, a framebuffer, and a one-week curriculum around it."
+  - title: "Ledger CLI for a small co-op"
+    url: /projects/ledger-cli/
+    year: 2024
+    summary: "Double-entry bookkeeping the bookkeeper actually uses."

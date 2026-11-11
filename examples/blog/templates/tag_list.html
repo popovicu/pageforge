@@ -1,0 +1,15 @@
+{{define "title"}}#{{.Tag}}{{end}}
+{{define "content"}}
+<section class="tag-page">
+  <h1>Posts tagged <span class="tag">#{{.Tag}}</span></h1>
+  <ol class="posts">
+    {{range .Pages}}
+    <li>
+      <a href="{{.URL | canonicalURL}}">{{.Title}}</a>
+      <span class="post-meta"> — <time datetime="{{.Date}}">{{formatTime "Jan 2, 2006" .Date}}</time></span>
+    </li>
+    {{end}}
+  </ol>
+  <p><a href="/tags/">← All tags</a></p>
+</section>
+{{end}}

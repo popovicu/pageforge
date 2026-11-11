@@ -1,0 +1,23 @@
+load("@rules_go//go:def.bzl", "go_binary", "go_library", "go_test")
+
+go_library(
+    name = "sitecheck_lib",
+    srcs = ["main.go"],
+    importpath = "github.com/popovicu/pageforge/renderers/sitecheck",
+    visibility = ["//visibility:private"],
+)
+
+go_binary(
+    name = "sitecheck",
+    embed = [":sitecheck_lib"],
+    pure = "on",
+    visibility = ["//visibility:public"],
+)
+
+go_test(
+    name = "sitecheck_test",
+    srcs = ["main_test.go"],
+    embed = [":sitecheck_lib"],
+    pure = "on",
+    deps = ["//internal/testutil"],
+)
