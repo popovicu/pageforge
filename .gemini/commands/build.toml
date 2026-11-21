@@ -1,8 +1,0 @@
-description = "Build all Bazel targets and report failures."
-
-prompt = """
-Run `bazel build //...` from the workspace root. If it fails, surface the
-relevant error lines (skip Bazel banner output and successful target lines)
-and propose a fix grounded in the actual error. Don't retry blindly — diagnose
-first.
-"""
